@@ -40,6 +40,12 @@ jobs:
             brew audit --strict --online "$name"
             brew install --formula "$name"
             brew test "$name"
+
+            bin="$(jq -r .bin "meta/$(basename "$formula" .rb).json")"
+            if jq -e .completions "meta/$(basename "$formula" .rb).json" >/dev/null; then
+              test -s "$(brew --prefix "$name")/share/zsh/site-functions/_$bin"
+              test -s "$(brew --prefix "$name")/etc/bash_completion.d/$bin"
+            fi
           done
 
       - name: Lint the generator
