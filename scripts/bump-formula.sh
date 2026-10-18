@@ -113,10 +113,14 @@ os_block() { # <macos|linux> <arm slot> <intel slot>
 # brew command on an unsupported machine into a backtrace. So the first archive
 # doubles as the default source; the blocks above override it per platform, and
 # the guards keep an unsupported machine from installing it.
+# No explicit `version`: with a top-level url Homebrew scans the version out of
+# the archive name, and `brew audit --strict` rejects stating it twice. This is
+# why the archives have to carry the tag in their name.
 default_source() { # <fallback rust target>
+  local sha
+  sha=$(sha_of "$1") || exit 1
   printf '  url "%s"\n' "$(url_of "$1")"
-  printf '  version "%s"\n' "$version"
-  printf '  sha256 "%s"\n' "$(sha_of "$1")"
+  printf '  sha256 "%s"\n' "$sha"
 }
 
 # When a whole OS is missing, say so at load time for the same reason.

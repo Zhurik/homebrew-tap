@@ -3,7 +3,6 @@ class Sshrek < Formula
   desc "Wrapper around ssh with connection history and a jump back to the last host"
   homepage "https://github.com/Zhurik/sshrek"
   url "https://github.com/Zhurik/sshrek/releases/download/v0.2.0/sshrek-v0.2.0-aarch64-apple-darwin.tar.gz"
-  version "0.2.0"
   sha256 "eb0ad7e020a3a4d97d63e37f637b10d9d4b4ac2ba553d6bf324987836f545b0b"
   license "MIT"
 
