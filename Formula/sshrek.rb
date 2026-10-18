@@ -2,28 +2,31 @@
 class Sshrek < Formula
   desc "Wrapper around ssh with connection history and a jump back to the last host"
   homepage "https://github.com/Zhurik/sshrek"
-  url "https://github.com/Zhurik/sshrek/releases/download/v0.2.0/sshrek-v0.2.0-aarch64-apple-darwin.tar.gz"
-  sha256 "eb0ad7e020a3a4d97d63e37f637b10d9d4b4ac2ba553d6bf324987836f545b0b"
+  url "https://github.com/Zhurik/sshrek/releases/download/v0.2.1/sshrek-v0.2.1-aarch64-apple-darwin.tar.gz"
+  sha256 "ac3e06f6a6b8cbea8663b81a79473f72a4ee908b2c764a7a37bb8e0608ce526e"
   license "MIT"
 
   on_macos do
-    depends_on arch: :arm64
-
     on_arm do
-      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.0/sshrek-v0.2.0-aarch64-apple-darwin.tar.gz"
-      sha256 "eb0ad7e020a3a4d97d63e37f637b10d9d4b4ac2ba553d6bf324987836f545b0b"
+      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.1/sshrek-v0.2.1-aarch64-apple-darwin.tar.gz"
+      sha256 "ac3e06f6a6b8cbea8663b81a79473f72a4ee908b2c764a7a37bb8e0608ce526e"
+    end
+
+    on_intel do
+      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.1/sshrek-v0.2.1-x86_64-apple-darwin.tar.gz"
+      sha256 "4b0d130b097edf0487d08660cdc61db1423909af4337239c069c175e2cf85056"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.0/sshrek-v0.2.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "14882b85b3e825113cfa161f2533e3159f817a1fbdcc5cc84aeab420347af07e"
+      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.1/sshrek-v0.2.1-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "2c806c600da9ae8970543f6bb637608ff9d45dd16139c5aea7378721965b7867"
     end
 
     on_intel do
-      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.0/sshrek-v0.2.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "354894633544c0aedf937141bff51749fb054b781f8dbefc46c8f29287f8d1a4"
+      url "https://github.com/Zhurik/sshrek/releases/download/v0.2.1/sshrek-v0.2.1-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "975e18b1edd04330dddd8ac56661e4750f58864f0a5696683680d247b5239388"
     end
   end
 
