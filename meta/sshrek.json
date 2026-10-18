@@ -1,0 +1,19 @@
+{
+  "class": "Sshrek",
+  "desc": "Wrapper around ssh with connection history and a jump back to the last host",
+  "homepage": "https://github.com/Zhurik/sshrek",
+  "license": "MIT",
+  "bin": "sshrek",
+  "completions": {
+    "subcommand": "completions"
+  },
+  "test": {
+    "args": "--version",
+    "match": "version"
+  },
+  "platforms": {
+    "macos_arm": "aarch64-apple-darwin",
+    "linux_intel": "x86_64-unknown-linux-musl",
+    "linux_arm": "aarch64-unknown-linux-musl"
+  }
+}

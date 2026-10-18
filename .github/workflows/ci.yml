@@ -1,0 +1,41 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  formula:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Put Homebrew on PATH
+        if: runner.os == 'Linux'
+        run: echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
+
+      # `brew style`/`brew audit` only accept formula names, so the checkout has
+      # to be visible to Homebrew as a real tap.
+      - name: Install the checkout as a tap
+        run: |
+          dest="$(brew --repository)/Library/Taps/zhurik/homebrew-tap"
+          mkdir -p "$(dirname "$dest")"
+          rm -rf "$dest"
+          cp -R "$GITHUB_WORKSPACE" "$dest"
+
+      - run: brew style zhurik/tap
+      - run: brew audit --strict --online --tap zhurik/tap
+
+      - name: Install and test every formula
+        run: |
+          for formula in Formula/*.rb; do
+            name="$(basename "$formula" .rb)"
+            brew install --formula "zhurik/tap/$name"
+            brew test "zhurik/tap/$name"
+          done

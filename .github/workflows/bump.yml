@@ -1,0 +1,46 @@
+name: bump
+
+# Re-renders a formula from a published release. Projects call this at the end of
+# their own release workflow; it can also be run by hand after a manual release.
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "Project to pick the release up from, as owner/repo"
+        required: true
+      tag:
+        description: "Release tag, e.g. v0.2.0"
+        required: true
+
+concurrency:
+  group: bump
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render the formula
+        run: scripts/bump-formula.sh "${{ inputs.repo }}" "${{ inputs.tag }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Commit the bump
+        run: |
+          name="${{ inputs.repo }}"; name="${name##*/}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula
+          if git diff --cached --quiet; then
+            echo "formula already up to date, nothing to commit"
+            exit 0
+          fi
+          git commit -m "$name ${{ inputs.tag }}"
+          git push || {
+            git pull --rebase
+            git push
+          }
