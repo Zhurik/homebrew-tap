@@ -29,13 +29,19 @@ jobs:
           rm -rf "$dest"
           cp -R "$GITHUB_WORKSPACE" "$dest"
 
-      - run: brew style zhurik/tap
-      - run: brew audit --strict --online --tap zhurik/tap
-
-      - name: Install and test every formula
+      # Named formulae rather than the whole tap: `brew style <tap>` would also
+      # impose Homebrew's internal shell style on scripts/, which shellcheck
+      # covers below instead.
+      - name: Style, audit, install and test every formula
         run: |
           for formula in Formula/*.rb; do
-            name="$(basename "$formula" .rb)"
-            brew install --formula "zhurik/tap/$name"
-            brew test "zhurik/tap/$name"
+            name="zhurik/tap/$(basename "$formula" .rb)"
+            brew style "$name"
+            brew audit --strict --online "$name"
+            brew install --formula "$name"
+            brew test "$name"
           done
+
+      - name: Lint the generator
+        if: runner.os == 'Linux'
+        run: shellcheck scripts/bump-formula.sh
