@@ -4,11 +4,13 @@ Homebrew formulae for my own tools.
 
 ```sh
 brew install Zhurik/tap/sshrek
+brew install Zhurik/tap/giter
 ```
 
 | Formula | What it is |
 |---|---|
 | [`sshrek`](https://github.com/Zhurik/sshrek) | `ssh` with connection history and a one-keystroke jump back to the last host |
+| [`giter`](https://github.com/Zhurik/giter) | which commit is deployed in your Kubernetes pods, per namespace |
 
 ## How it works
 
