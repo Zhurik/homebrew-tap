@@ -29,6 +29,11 @@ jobs:
           rm -rf "$dest"
           cp -R "$GITHUB_WORKSPACE" "$dest"
 
+      # Homebrew refuses to load formulae from a non-official tap until it is
+      # trusted; a user's `brew install zhurik/tap/<name>` does that implicitly.
+      - name: Trust the tap
+        run: brew trust --tap zhurik/tap
+
       # Named formulae rather than the whole tap: `brew style <tap>` would also
       # impose Homebrew's internal shell style on scripts/, which shellcheck
       # covers below instead.
