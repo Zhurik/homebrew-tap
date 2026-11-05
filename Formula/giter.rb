@@ -2,31 +2,31 @@
 class Giter < Formula
   desc "Check which commit is deployed in your Kubernetes pods"
   homepage "https://github.com/Zhurik/giter"
-  url "https://github.com/Zhurik/giter/releases/download/v0.3.0/giter-v0.3.0-aarch64-apple-darwin.tar.gz"
-  sha256 "0e4623ab0ffe51684beb6bc4c6baa7ac37092cf1f995711e98127de622168787"
+  url "https://github.com/Zhurik/giter/releases/download/v0.3.1/giter-v0.3.1-aarch64-apple-darwin.tar.gz"
+  sha256 "7eae74cd15d910d39fc89d04c6f7c13dc4f3ccebc083192fcd94a466fcd98972"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/Zhurik/giter/releases/download/v0.3.0/giter-v0.3.0-aarch64-apple-darwin.tar.gz"
-      sha256 "0e4623ab0ffe51684beb6bc4c6baa7ac37092cf1f995711e98127de622168787"
+      url "https://github.com/Zhurik/giter/releases/download/v0.3.1/giter-v0.3.1-aarch64-apple-darwin.tar.gz"
+      sha256 "7eae74cd15d910d39fc89d04c6f7c13dc4f3ccebc083192fcd94a466fcd98972"
     end
 
     on_intel do
-      url "https://github.com/Zhurik/giter/releases/download/v0.3.0/giter-v0.3.0-x86_64-apple-darwin.tar.gz"
-      sha256 "ec772b2a25c4473c74a70050c9175e53254b704356dac3d4890f079f1f795b1d"
+      url "https://github.com/Zhurik/giter/releases/download/v0.3.1/giter-v0.3.1-x86_64-apple-darwin.tar.gz"
+      sha256 "3f73be5c7ada49e4f579a197ad6a29f487bf4860d8cf0ff47d4da9a8e2b5009a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Zhurik/giter/releases/download/v0.3.0/giter-v0.3.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "09baa388d4cee85d43211fedeffe335cc3b9c98f5708abe880a5cfeca3a463ff"
+      url "https://github.com/Zhurik/giter/releases/download/v0.3.1/giter-v0.3.1-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "2d463732b2005bdfbee79d9969e56e645238d03f634805854406c48642d6b772"
     end
 
     on_intel do
-      url "https://github.com/Zhurik/giter/releases/download/v0.3.0/giter-v0.3.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "631ebf839cfa838c12858f9a5bcafdc6c835544dcbed995fce0a55058fa67426"
+      url "https://github.com/Zhurik/giter/releases/download/v0.3.1/giter-v0.3.1-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "c78733a98a6c6df11393b06a4f4c9afd665d246e1407501f6c53f687e7e21d6a"
     end
   end
 
